@@ -67,6 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/*.so.*
-%{_libdir}/scim-1.0/Helper/*.so
+%{_libdir}/scim-1.0/1.4.0/Helper/*.so
 
 
