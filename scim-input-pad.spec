@@ -14,6 +14,7 @@ Group:		System/Internationalization
 License:		GPL
 URL:			http://sourceforge.net/projects/scim/
 Source0:		http://prdownloads.sourceforge.net/scim/%{name}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			%{libname} = %{version}
 Requires:			scim >= %{scim_version}
 BuildRequires:		scim-devel >= %{scim_version}
