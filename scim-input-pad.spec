@@ -1,39 +1,23 @@
-%define version	0.1.1
-%define release	%mkrel 5
-
-%define scim_version	1.4.0
-
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
-
 Name:		scim-input-pad
 Summary:	An onscreen input pad to input some symbols
-Version:		%{version}
-Release:		%{release}
+Version:	0.1.1
+Release:	%mkrel 6
 Group:		System/Internationalization
-License:		GPL
-URL:			http://sourceforge.net/projects/scim/
-Source0:		http://prdownloads.sourceforge.net/scim/%{name}-%{version}.tar.bz2
+License:	GPLv2+
+URL:		http://sourceforge.net/projects/scim/
+Source0:	http://prdownloads.sourceforge.net/scim/%{name}-%{version}.tar.bz2
+Patch0:		scim-input-pad-0.1.1-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}
-Requires:			scim >= %{scim_version}
-BuildRequires:		scim-devel >= %{scim_version}
+Requires:	scim-client = %{scim_api}
+BuildRequires:	scim-devel >= 1.4.7
+Obsoletes:	%{_lib}scim-input-pad0
 
 %description
 An onscreen input pad to input some symbols.
 
-
-%package -n	%{libname}
-Summary:	Scim-input-pad library
-Group:		System/Internationalization
-Provides:		%{libname_orig} = %{version}-%{release}
-
-%description -n %{libname}
-Scim-input-pad library.
-
-
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x
@@ -45,7 +29,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove unnecessary files
 rm -f %{buildroot}/%{_libdir}/*.{a,la,so}
-rm -f %{buildroot}/%{_libdir}/scim-*/*/*.{a,la}
+rm -f %{buildroot}/%{scim_plugins_dir}/*/*.{a,la}
 
 %find_lang %{name}
 
@@ -59,20 +43,11 @@ rm -rf $RPM_BUILD_ROOT
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
 
-
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING README
 %{_bindir}/scim-*
 %{_datadir}/scim/icons/*
 %{_datadir}/scim/input-pad/*
-
-%files -n %{libname}
-%defattr(-,root,root)
-%doc COPYING
 %{_libdir}/*.so.*
-%{_libdir}/scim-1.0/1.4.0/Helper/*.so
-%{_libdir}/scim-1.0/1.4.0/Helper/*.a
-%{_libdir}/scim-1.0/1.4.0/Helper/*.la
-
-
+%{scim_plugins_dir}/Helper/*.so
