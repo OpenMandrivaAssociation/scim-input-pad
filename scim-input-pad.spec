@@ -4,7 +4,7 @@ Version:	0.1.2
 Release:	%mkrel 2
 Group:		System/Internationalization
 License:	GPLv2+
-URL:		http://sourceforge.net/projects/scim/
+URL:		https://sourceforge.net/projects/scim/
 Source0:	http://prdownloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-input-pad-0.1.1-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
