@@ -9,6 +9,11 @@ Source0:	http://prdownloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-input-pad-0.1.1-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:	scim-client = %{scim_api}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	scim-devel >= 1.4.7
 Obsoletes:	%{_lib}scim-input-pad0
 
