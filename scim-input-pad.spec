@@ -1,7 +1,7 @@
 Name:		scim-input-pad
 Summary:	An onscreen input pad to input some symbols
 Version:	0.1.2
-Release:	%mkrel 2
+Release:	3
 Group:		System/Internationalization
 License:	GPLv2+
 URL:		https://sourceforge.net/projects/scim/
